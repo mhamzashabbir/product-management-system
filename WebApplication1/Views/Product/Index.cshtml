@@ -1,0 +1,48 @@
+﻿@model List<WebApplication1.Models.Product>
+
+<h1 class="text-center">Product List</h1>
+
+<div class="container">
+    <table class="table table-bordered table-striped">
+        <thead class="thead-dark">
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Description</th>
+                <th>Price</th>
+                <th>Categories</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var product in Model)
+            {
+                <tr>
+                    <td>@product.Id</td>
+                    <td>@product.Name</td>
+                    <td>@product.Description</td>
+                    <td>@product.Price</td>
+                    <td>
+                        @foreach (var categoryId in product.CategoryIds)
+                        {
+                            <span>@CategoryManager.GetCategoryById(categoryId).Name</span>
+                            @if (categoryId != product.CategoryIds.Last())
+                            {
+                                <span>, </span>
+                            }
+                        }
+                    </td>
+                    <td>
+                        <a asp-action="Details" asp-route-id="@product.Id" class="btn btn-info">Details</a>
+                        <a asp-action="Edit" asp-route-id="@product.Id" class="btn btn-primary">Edit</a>
+                        <a asp-action="Delete" asp-route-id="@product.Id" class="btn btn-danger">Delete</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+
+<div class="text-center">
+    <a asp-action="Create" class="btn btn-success">Create New Product</a>
+</div>

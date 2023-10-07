@@ -1,0 +1,33 @@
+﻿@{
+    ViewData["Title"] = "Home";
+}
+
+<div class="container text-center mt-5">
+    <h1 class="display-4">Welcome to Our Management System</h1>
+    <p class="lead">Manage your products and categories with ease.</p>
+</div>
+
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-md-6">
+            <div class="card">
+                <img src="https://c4.wallpaperflare.com/wallpaper/255/998/444/apple-products-iphone-4-and-ipad-wallpaper-preview.jpg" class="card-img-top img-fluid" alt="Product Management" style="height: 200px; object-fit: cover;">
+                <div class="card-body">
+                    <h5 class="card-title">Product Management</h5>
+                    <p class="card-text">Manage your products here.</p>
+                    <a href="@Url.Action("Index", "Product")" class="btn btn-primary">Go to Product Management</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="card">
+                <img src="https://supplychaingamechanger.com/wp-content/uploads/2021/09/puzzle-3486886_1920-1200x723.webp" class="card-img-top img-fluid" alt="Category Management" style="height: 200px; object-fit: cover;">
+                <div class="card-body">
+                    <h5 class="card-title">Category Management</h5>
+                    <p class="card-text">Manage your categories here.</p>
+                    <a href="@Url.Action("Index", "Category")" class="btn btn-primary">Go to Category Management</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

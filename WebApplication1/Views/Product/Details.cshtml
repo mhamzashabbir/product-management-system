@@ -1,0 +1,33 @@
+﻿@model WebApplication1.Models.Product
+
+<div class="container mt-5">
+    <div class="card">
+        <div class="card-header">
+            <h1 class="card-title text-center">Product Details</h1>
+        </div>
+        <div class="card-body">
+            <div class="row">
+                <div class="col-md-3">
+                    <h4>Name:</h4>
+                    <p>@Model.Name</p>
+                </div>
+                <div class="col-md-3">
+                    <h4>Description:</h4>
+                    <p>@Model.Description</p>
+                </div>
+                <div class="col-md-3">
+                    <h4>Price:</h4>
+                    <p>@Model.Price</p>
+                </div>
+                <div class="col-md-3">
+                    <h4>Category IDs:</h4>
+                    <p>@string.Join(", ", Model.CategoryIds)</p>
+                </div>
+            </div>
+        </div>
+        <div class="card-footer text-center">
+            <a asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-primary">Edit</a>
+            <a asp-action="Index" class="btn btn-secondary ml-2">Back to List</a>
+        </div>
+    </div>
+</div>

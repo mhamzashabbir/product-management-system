@@ -1,0 +1,44 @@
+﻿@model List<WebApplication1.Models.Product>
+@{
+    ViewData["Title"] = "Category Details";
+}
+
+<div class="container mt-5">
+    <div class="card">
+        <div class="card-header">
+            <h1 class="card-title text-center">Category Details</h1>
+        </div>
+        <div class="card-body">
+            <h4>Name:</h4>
+            <p>@(Model.Count > 0 ? string.Join(", ", Model[0].CategoryIds.Select(id => CategoryManager.GetCategoryById(id)?.Name)) : "")</p>
+            <h4>Products in this Category:</h4>
+            <ul>
+                @foreach (var product in Model)
+                {
+                    <li>
+                        @product.Name
+                        @{
+                            var categoryNames = new List<string>();
+                            foreach (var categoryId in product.CategoryIds)
+                            {
+                                var category = CategoryManager.GetCategoryById(categoryId);
+                                if (category != null)
+                                {
+                                    categoryNames.Add(category.Name);
+                                }
+                            }
+                        }
+                        @if (categoryNames.Count > 0)
+                        {
+                            <p>Categories: @string.Join(", ", categoryNames)</p>
+                        }
+                    </li>
+                }
+            </ul>
+        </div>
+        <div class="card-footer text-center">
+            <a asp-action="Edit" asp-route-id="@Model.Count > 0 ? Model[0].CategoryIds : 0" class="btn btn-primary">Edit</a>
+            <a asp-action="Index" class="btn btn-secondary ml-2">Back to List</a>
+        </div>
+    </div>
+</div>
